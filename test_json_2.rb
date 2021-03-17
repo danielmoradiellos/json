@@ -6,5 +6,5 @@ puts json['foo'] # prints "bar"
 puts "\n ping : "
 puts json['ping'] # prints "pong"
 puts "\n big : "
-puts json['big'] # prints "band"
+puts json['big'] # prints "bang"
 
