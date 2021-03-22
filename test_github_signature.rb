@@ -29,8 +29,8 @@ end
 def verify_signature(payload_body)
   signature = 'sha256=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), ENV['SECRET_TOKEN'], payload_body)
   puts signature #sha256=e99c95fbf8dad0e7a66511ce7599ed8ce4a76a9979af51a2959d83c4812cb27d
-  #return halt 500, "Signatures didn't match!" unless Rack::Utils.secure_compare(signature, request.env['HTTP_X_HUB_SIGNATURE_256'])
-  return halt 500, "Signatures didn't match!" unless Rack::Utils.secure_compare(signature,"sha256=e99c95fbf8dad0e7a66511ce7599ed8ce4a76a9979af51a2959d83c4812cb27d" )
+  return halt 500, "Signatures didn't match!" unless Rack::Utils.secure_compare(signature, request.env['HTTP_X_HUB_SIGNATURE_256'])
+  #return halt 500, "Signatures didn't match!" unless Rack::Utils.secure_compare(signature,"sha256=e99c95fbf8dad0e7a66511ce7599ed8ce4a76a9979af51a2959d83c4812cb27d" )
   puts "Signature match"
 end
 
