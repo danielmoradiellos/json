@@ -24,6 +24,10 @@ post '/payload' do
   puts "SECRET_TOKEN:" 
   puts ENV['SECRET_TOKEN']
   "I got some JSON: #{push.inspect}"
+  puts "\n params[:payload]: "
+  puts params.inspect
+  puts "\nDONE\n"
+#  puts params[:payload]
 end
 
 def verify_signature(payload_body)
