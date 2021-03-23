@@ -7,7 +7,7 @@ require 'openssl'
 
 post '/payload' do
   push = JSON.parse(request.body.read)
-  request.body.rewind
+  request.body.rewind # It's an IO object that gets buffered to a file and needs to be read in the order it was received for things like file uploads or streaming. Also you have layers of rack middleware that possibly have read the body as well so you need to be able to get back to the beginning when needed. https://stackoverflow.com/questions/27372361/why-does-sinatra-need-to-rewind-the-request-body
   payload_body = request.body.read
   verify_signature(payload_body)
 # request.body.read
