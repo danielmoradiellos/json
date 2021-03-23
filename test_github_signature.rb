@@ -25,7 +25,8 @@ post '/payload' do
   puts ENV['SECRET_TOKEN']
   "I got some JSON: #{push.inspect}"
   puts "\n params[:payload]: "
-  puts params.inspect
+  # HTTP GET : http://www.example.com/?vote[item_id]=1&vote[user_id]=2 then params[:vote] would be a hash, params[:vote][:item_id] would be "1" and params[:vote][:user_id] would be "2".
+  puts params.inspect #https://stackoverflow.com/questions/6885990/rails-params-explained
   puts "\nDONE\n"
 #  puts params[:payload]
 end
